@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/btn_speak"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:text="说出你想要的商品"
+    >
+
+</Button>
