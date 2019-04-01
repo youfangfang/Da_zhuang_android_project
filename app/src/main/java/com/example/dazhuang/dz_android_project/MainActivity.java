@@ -7,6 +7,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.example.dazhuang.dz_android_project.activity.DownListActivity;
 import com.example.dazhuang.dz_android_project.activity.KeyboardActivity;
 import com.example.dazhuang.dz_android_project.activity.OtherKeyboardActivity;
 import com.example.dazhuang.dz_android_project.activity.RefreshActivity;
@@ -38,14 +39,22 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, TestActivity.class);
         startActivity(intent);
     }
+
     @OnClick(R.id.btn_search)
     public void btn_search() {
         Intent intent = new Intent(this, KeyboardActivity.class);
         startActivity(intent);
     }
+
     @OnClick(R.id.btn_other_search)
     public void btn_other_search() {
         Intent intent = new Intent(this, OtherKeyboardActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.btn_down_list)
+    public void btn_down_list() {
+        Intent intent = new Intent(this, DownListActivity.class);
         startActivity(intent);
     }
 }
