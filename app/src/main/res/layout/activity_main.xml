@@ -10,14 +10,14 @@
     <Button
         android:id="@+id/btn_refresh"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         android:background="@color/blue_color"
         android:text="自定义下拉刷新" />
 
     <Button
         android:id="@+id/btn_search"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         android:layout_marginTop="5dp"
         android:background="@color/blue_color"
         android:text="根据键盘显示按钮" />
@@ -25,15 +25,39 @@
     <Button
         android:id="@+id/btn_other_search"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         android:layout_marginTop="5dp"
         android:background="@color/blue_color"
         android:text="根据键盘显示按钮（2）" />
+
     <Button
         android:id="@+id/btn_down_list"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         android:layout_marginTop="5dp"
         android:background="@color/blue_color"
         android:text="下拉列表" />
+
+    <Button
+        android:id="@+id/btn_viewpage"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/blue_color"
+        android:text="可以滑动带小点的页面" />
+    <Button
+        android:id="@+id/btn_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/blue_color"
+        android:text="带图标的tablayout" />
+
+    <Button
+        android:id="@+id/btn_guide"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/blue_color"
+        android:text="蒙层的引导页面" />
 </LinearLayout>

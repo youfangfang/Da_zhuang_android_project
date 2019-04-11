@@ -1,4 +1,4 @@
-package com.example.dazhuang.dz_android_project.activity.adapter;
+package com.example.dazhuang.dz_android_project.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

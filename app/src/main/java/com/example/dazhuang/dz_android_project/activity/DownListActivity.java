@@ -21,7 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dazhuang.dz_android_project.R;
-import com.example.dazhuang.dz_android_project.activity.adapter.DownListAdapter;
+import com.example.dazhuang.dz_android_project.adapter.DownListAdapter;
 import com.example.dazhuang.dz_android_project.utils.HiddenAnimUtils;
 
 import java.util.ArrayList;

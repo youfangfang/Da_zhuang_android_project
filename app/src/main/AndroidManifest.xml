@@ -23,6 +23,9 @@
         <activity android:name=".activity.TestActivity" />
         <activity android:name=".activity.OtherKeyboardActivity" />
         <activity android:name=".activity.DownListActivity" />
+        <activity android:name=".activity.adapter.ViewPagerActivity" />
+        <activity android:name=".activity.TablayoutActivity" />
+        <activity android:name=".activity.GuideActivity" />
     </application>
 
 </manifest>
