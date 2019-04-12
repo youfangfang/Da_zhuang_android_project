@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+    <TextView
+        android:id="@+id/tv_daohang"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@mipmap/icon_navigation" />
+
+    <LinearLayout
+        android:id="@+id/ll_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/tv_daohang"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_shoye"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="首页" />
+
+        <TextView
+            android:id="@+id/tv_qingdan"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="清单" />
+
+        <TextView
+            android:id="@+id/tv_mine"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="我的" />
+    </LinearLayout>
+</RelativeLayout>

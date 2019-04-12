@@ -69,6 +69,12 @@ public class DragView extends LinearLayout {
     }
 
     @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        return super.onInterceptTouchEvent(ev);
+    }
+
+
+    @Override
     public boolean onTouchEvent(MotionEvent event) {
         super.onTouchEvent(event);
         if (this.isEnabled()) {
@@ -122,8 +128,6 @@ public class DragView extends LinearLayout {
         }
         return false;
     }
-
-
 
 
 }

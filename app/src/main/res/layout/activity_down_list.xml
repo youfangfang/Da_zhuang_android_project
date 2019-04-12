@@ -4,55 +4,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/input"
+    <com.example.dazhuang.dz_android_project.view.DragLayout1
+        android:id="@+id/draglayout"
         android:layout_width="match_parent"
-        android:layout_height="45dp" />
+        android:layout_height="match_parent">
 
-    <com.example.dazhuang.dz_android_project.view.DragLayout
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="200dp"
-        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/input"
+            android:layout_width="match_parent"
+            android:layout_height="45dp" />
+
 
         <TextView
-            android:id="@+id/tv_daohang"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@color/blue_color"
-            android:text="点击" />
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="dddddd" />
 
-        <LinearLayout
-            android:layout_toRightOf="@+id/tv_daohang"
-            android:id="@+id/ll_layout"
-            android:layout_width="wrap_content"
+        <ImageButton
+            android:id="@+id/ib_bg"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:visibility="gone">
+            android:background="#88000000"
+            android:visibility="gone" />
 
-            <TextView
-                android:id="@+id/tv_shoye"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@color/blue_color"
-                android:text="首页" />
-
-            <TextView
-                android:id="@+id/tv_qingdan"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@color/blue_color"
-                android:text="清单" />
-
-            <TextView
-                android:id="@+id/tv_mine"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@color/blue_color"
-                android:text="我的" />
-        </LinearLayout>
-
-    </com.example.dazhuang.dz_android_project.view.DragLayout>
+    </com.example.dazhuang.dz_android_project.view.DragLayout1>
 </RelativeLayout>

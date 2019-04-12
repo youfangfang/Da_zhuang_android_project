@@ -9,11 +9,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListPopupWindow;
 import android.widget.PopupWindow;
@@ -22,7 +25,9 @@ import android.widget.Toast;
 
 import com.example.dazhuang.dz_android_project.R;
 import com.example.dazhuang.dz_android_project.adapter.DownListAdapter;
+import com.example.dazhuang.dz_android_project.utils.CommonUtil;
 import com.example.dazhuang.dz_android_project.utils.HiddenAnimUtils;
+import com.example.dazhuang.dz_android_project.view.DragLayout1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +44,16 @@ public class DownListActivity extends AppCompatActivity {
     @BindView(R.id.ll_layout)
     LinearLayout ll_layout;
     private List<String> list = new ArrayList<>();
+    @BindView(R.id.draglayout)
+    DragLayout1 draglayout;
+    @BindView(R.id.ib_bg)
+    ImageButton ib_bg;
+    /**
+     * 屏幕的宽高
+     */
+    protected int mScreenWidth;
+    protected int mScreenHeight;
+    private ImageButton imageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +80,17 @@ public class DownListActivity extends AppCompatActivity {
     }
 
 
+
+    /**
+     * 获取当前屏幕宽高
+     */
+    public void getScreenWidthAndHeight() {
+        //获取当前屏幕宽高
+        DisplayMetrics metric = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metric);
+        mScreenWidth = metric.widthPixels;
+        mScreenHeight = metric.heightPixels;
+    }
 
     private void initlist() {
         list.add("海尔");
@@ -135,9 +161,19 @@ public class DownListActivity extends AppCompatActivity {
     public void tv_shoye() {
         Toast.makeText(DownListActivity.this, "首页", Toast.LENGTH_SHORT).show();
     }
+
+    private boolean isOpen = false;
+
     @OnClick(R.id.tv_daohang)
     public void tv_daohang() {
-        HiddenAnimUtils.newInstance(DownListActivity.this,ll_layout,tv_daohang,180).toggle();
+        if (isOpen) {
+            isOpen = false;
+            ib_bg.setVisibility(View.GONE);
+        } else {
+            isOpen = true;
+            ib_bg.setVisibility(View.VISIBLE);
+        }
+        HiddenAnimUtils.newInstance(DownListActivity.this, ll_layout, tv_daohang, 180).toggle();
     }
 }
 
