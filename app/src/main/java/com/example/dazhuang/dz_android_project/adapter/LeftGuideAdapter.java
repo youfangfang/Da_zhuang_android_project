@@ -16,29 +16,32 @@ import com.example.dazhuang.dz_android_project.view.guideView.Component;
 import com.example.dazhuang.dz_android_project.view.guideView.Guide;
 import com.example.dazhuang.dz_android_project.view.guideView.GuideBuilder;
 import com.example.dazhuang.dz_android_project.view.guideView.MutiComponent;
+import com.example.dazhuang.dz_android_project.view.guideView.SimpleComponent;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class GuideAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+/**
+ * @author fangyou
+ * @time 2019/6/14
+ */
+public class LeftGuideAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context mContext;
     private List<String> mList;
     private int showTimes = 0;
 
-    public GuideAdapter(Context mContext, List<String> mList) {
+    public LeftGuideAdapter(Context mContext, List<String> mList) {
         this.mContext = mContext;
         this.mList = mList;
     }
-
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View itemView = LayoutInflater.from(mContext).inflate(R.layout.layout_item, viewGroup, false);
+        View itemView = LayoutInflater.from(mContext).inflate(R.layout.guide_item, viewGroup, false);
         TopViewHolder holder = new TopViewHolder(itemView);
         return holder;
-
     }
 
     @Override
@@ -46,7 +49,7 @@ public class GuideAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         final TopViewHolder topViewHolder = (TopViewHolder) viewHolder;
         String s = mList.get(i);
         topViewHolder.tv_title.setText(s);
-        if (i == 7 && showTimes == 0) {
+        if (i == 0 && showTimes == 0) {
             final View finalView = topViewHolder.rl_item;
             finalView.post(new Runnable() {
                 @Override
@@ -56,39 +59,45 @@ public class GuideAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             });
         }
     }
-
-    @Override
-    public int getItemCount() {
-        return mList.size();
-    }
-
     public void showGuideView(View targetView) {
         showTimes++;
         GuideBuilder builder = new GuideBuilder();
         builder.setTargetView(targetView)
                 .setAlpha(150)
                 .setHighTargetGraphStyle(Component.ROUNDRECT)
-                .setHighTargetCorner(10)
+                .setHighTargetCorner(180)
                 .setHighTargetPadding(10)
                 .setOverlayTarget(false)
                 .setOutsideTouchable(false);
         builder.setOnVisibilityChangedListener(new GuideBuilder.OnVisibilityChangedListener() {
             @Override
             public void onShown() {
-                Toast.makeText(mContext, "引导层被点击了", Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
             public void onDismiss() {
-                Toast.makeText(mContext, "引导层", Toast.LENGTH_SHORT).show();
+                if (mOnItemClickListener!=null){
+                    mOnItemClickListener.onGuideViewClick();
+                }
             }
         });
-
-        builder.addComponent(new MutiComponent());
+        SimpleComponent simpleComponent = new SimpleComponent();
+        simpleComponent.setHintContext("点击切换商品类目～");
+        simpleComponent.setAnchor(Component.ANCHOR_RIGHT);
+        simpleComponent.setFitPosition(Component.FIT_CENTER);
+        simpleComponent.setXOffset(0);
+        simpleComponent.setYOffset(-10);
+        builder.addComponent(simpleComponent);
         Guide guide = builder.createGuide();
         guide.setShouldCheckLocInWindow(true);
         guide.show((Activity) mContext);
     }
+    @Override
+    public int getItemCount() {
+        return mList.size();
+    }
+
 
 
     public static class TopViewHolder extends RecyclerView.ViewHolder {
@@ -105,4 +114,16 @@ public class GuideAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
 
     }
+
+
+    private OnItemClickListener mOnItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.mOnItemClickListener = listener;
+    }
+
+    public interface OnItemClickListener {
+        void onGuideViewClick();
+    }
+
 }

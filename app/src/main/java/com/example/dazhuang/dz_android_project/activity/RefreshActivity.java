@@ -12,21 +12,25 @@ import android.widget.TextView;
 
 import com.example.dazhuang.dz_android_project.PathTextView;
 import com.example.dazhuang.dz_android_project.R;
+import com.example.dazhuang.dz_android_project.base.BaseActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class RefreshActivity extends AppCompatActivity {
+public class RefreshActivity extends BaseActivity {
     private ImageView imageView;
     public PathTextView tv_text;
     private AnimationDrawable frameAnim;
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_refresh);
-        ButterKnife.bind(this);
+    protected int getLayout() {
+        return R.layout.activity_refresh;
+    }
+
+    @Override
+    protected void initEventAndData() {
         imageView = findViewById(R.id.refresh_header_imge);
         tv_text = findViewById(R.id.tv_text);
         // 通过逐帧动画的资源文件获得AnimationDrawable示例

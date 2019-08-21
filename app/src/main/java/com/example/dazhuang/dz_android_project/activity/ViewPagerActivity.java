@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.example.dazhuang.dz_android_project.R;
 import com.example.dazhuang.dz_android_project.adapter.MyAdapter;
+import com.example.dazhuang.dz_android_project.base.BaseActivity;
 import com.example.dazhuang.dz_android_project.utils.HorizontalPageLayoutManager;
 import com.example.dazhuang.dz_android_project.utils.PagingScrollHelper;
 
@@ -15,7 +16,7 @@ import com.example.dazhuang.dz_android_project.utils.PagingScrollHelper;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ViewPagerActivity extends AppCompatActivity implements PagingScrollHelper.onPageChangeListener {
+public class ViewPagerActivity extends BaseActivity implements PagingScrollHelper.onPageChangeListener {
     @BindView(R.id.recyclerview_vertical)
     RecyclerView recyclerView;
     @BindView(R.id.iv_one)
@@ -29,11 +30,14 @@ public class ViewPagerActivity extends AppCompatActivity implements PagingScroll
     private MyAdapter myAdapter;
     private PagingScrollHelper scrollHelper = new PagingScrollHelper();
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_viewpager);
-        ButterKnife.bind(this);
+    protected int getLayout() {
+        return R.layout.activity_viewpager;
+    }
+
+    @Override
+    protected void initEventAndData() {
         HorizontalPageLayoutManager horizontalPageLayoutManager = new HorizontalPageLayoutManager(1, 3);
         recyclerView.setLayoutManager(horizontalPageLayoutManager);
         myAdapter = new MyAdapter();

@@ -14,11 +14,12 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import com.example.dazhuang.dz_android_project.R;
+import com.example.dazhuang.dz_android_project.base.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class KeyboardActivity extends AppCompatActivity {
+public class KeyboardActivity extends BaseActivity {
     @BindView(R.id.edit_view)
     EditText edit_view;
     @BindView(R.id.rl_root)
@@ -27,13 +28,14 @@ public class KeyboardActivity extends AppCompatActivity {
     private View view;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_keyboard);
-        ButterKnife.bind(this);
+    protected int getLayout() {
+        return R.layout.activity_keyboard;
+    }
+
+    @Override
+    protected void initEventAndData() {
         //监听视图树的布局改变(弹出/隐藏软键盘会触发)
         getWindow().getDecorView().getViewTreeObserver().addOnGlobalLayoutListener(new KeyboardOnGlobalChangeListener());
-
     }
 
 

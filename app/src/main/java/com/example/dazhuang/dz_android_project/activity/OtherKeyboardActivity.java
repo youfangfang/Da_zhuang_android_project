@@ -8,21 +8,25 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import com.example.dazhuang.dz_android_project.R;
+import com.example.dazhuang.dz_android_project.base.BaseActivity;
 import com.example.dazhuang.dz_android_project.listener.SoftKeyBoardListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class OtherKeyboardActivity extends AppCompatActivity {
+public class OtherKeyboardActivity extends BaseActivity {
     @BindView(R.id.rl_speack)
     RelativeLayout rl_speack;
     @BindView(R.id.edit_view)
     EditText edit_view;
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_other_keyboard);
-        ButterKnife.bind(this);
+    protected int getLayout() {
+        return R.layout.activity_other_keyboard;
+    }
+
+    @Override
+    protected void initEventAndData() {
         SoftKeyBoardListener.setListener(OtherKeyboardActivity.this, new SoftKeyBoardListener.OnSoftKeyBoardChangeListener() {
             @Override
             public void keyBoardShow(int height) {

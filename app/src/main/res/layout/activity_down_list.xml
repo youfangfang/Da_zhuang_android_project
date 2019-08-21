@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:clipToPadding="false"
+    android:fitsSystemWindows="true">
 
     <com.example.dazhuang.dz_android_project.view.DragLayout1
         android:id="@+id/draglayout"
@@ -26,6 +28,7 @@
             android:layout_height="match_parent"
             android:background="#88000000"
             android:visibility="gone" />
+
 
     </com.example.dazhuang.dz_android_project.view.DragLayout1>
 </RelativeLayout>

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.dazhuang.dz_android_project.R;
 import com.example.dazhuang.dz_android_project.adapter.TabLayoutAdapter;
+import com.example.dazhuang.dz_android_project.base.BaseActivity;
 import com.example.dazhuang.dz_android_project.fragment.TabFragment;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class TablayoutActivity extends AppCompatActivity {
+public class TablayoutActivity extends BaseActivity {
     @BindView(R.id.tablayout)
     TabLayout tablayout;
     @BindView(R.id.viewpager)
@@ -28,11 +29,14 @@ public class TablayoutActivity extends AppCompatActivity {
     List<Fragment> fragmentList = new ArrayList<>();
     List<String> titleList = new ArrayList<>();
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tablayout);
-        ButterKnife.bind(this);
+    protected int getLayout() {
+        return R.layout.activity_tablayout;
+    }
+
+    @Override
+    protected void initEventAndData() {
         titleList.add("商品");
         titleList.add("详情");
         for (int i = 0; i < titleList.size(); i++) {
@@ -64,6 +68,7 @@ public class TablayoutActivity extends AppCompatActivity {
             }
         });
     }
+
     /**
      * 引入布局设置图标和标题
      * @param position

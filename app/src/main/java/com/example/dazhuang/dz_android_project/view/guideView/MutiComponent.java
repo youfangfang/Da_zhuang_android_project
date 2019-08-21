@@ -31,7 +31,6 @@ public class MutiComponent implements Component {
     ll.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        Toast.makeText(view.getContext(), "引导层被点击了", Toast.LENGTH_SHORT).show();
       }
     });
     return ll;

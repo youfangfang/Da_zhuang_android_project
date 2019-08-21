@@ -26,7 +26,8 @@
         android:id="@+id/rl_speack"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="match_parent"

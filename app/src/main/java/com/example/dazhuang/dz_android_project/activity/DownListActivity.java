@@ -25,8 +25,10 @@ import android.widget.Toast;
 
 import com.example.dazhuang.dz_android_project.R;
 import com.example.dazhuang.dz_android_project.adapter.DownListAdapter;
+import com.example.dazhuang.dz_android_project.base.BaseActivity;
 import com.example.dazhuang.dz_android_project.utils.CommonUtil;
 import com.example.dazhuang.dz_android_project.utils.HiddenAnimUtils;
+import com.example.dazhuang.dz_android_project.utils.StatusBarUtil;
 import com.example.dazhuang.dz_android_project.view.DragLayout1;
 
 import java.util.ArrayList;
@@ -36,14 +38,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class DownListActivity extends AppCompatActivity {
+public class DownListActivity extends BaseActivity {
     @BindView(R.id.input)
     EditText input;
     @BindView(R.id.tv_daohang)
     TextView tv_daohang;
     @BindView(R.id.ll_layout)
     LinearLayout ll_layout;
-    private List<String> list = new ArrayList<>();
+
     @BindView(R.id.draglayout)
     DragLayout1 draglayout;
     @BindView(R.id.ib_bg)
@@ -54,12 +56,16 @@ public class DownListActivity extends AppCompatActivity {
     protected int mScreenWidth;
     protected int mScreenHeight;
     private ImageButton imageButton;
+    private List<String> list = new ArrayList<>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_down_list);
-        ButterKnife.bind(this);
+    protected int getLayout() {
+        return R.layout.activity_down_list;
+    }
+
+    @Override
+    protected void initEventAndData() {
+        StatusBarUtil.transparencyBar(this);
         initlist();
         input.addTextChangedListener(new TextWatcher() {
             @Override
@@ -78,7 +84,6 @@ public class DownListActivity extends AppCompatActivity {
             }
         });
     }
-
 
 
     /**
