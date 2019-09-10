@@ -13,6 +13,7 @@ import com.example.dazhuang.dz_android_project.R;
 import com.example.dazhuang.dz_android_project.base.BaseActivity;
 import com.example.dazhuang.dz_android_project.head.MyRefreshHeader;
 import com.example.dazhuang.dz_android_project.utils.AntiHijackingUtil;
+import com.example.dazhuang.dz_android_project.view.lRecyclerView.LRecyclerView;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -27,7 +28,7 @@ public class TestActivity extends BaseActivity {
     @BindView(R.id.refreshLayout)
     SmartRefreshLayout refreshLayout;
     @BindView(R.id.mRecyclerView)
-    RecyclerView mRecyclerView;
+    LRecyclerView mRecyclerView;
     private List<String> mList = new ArrayList<>();
 
 

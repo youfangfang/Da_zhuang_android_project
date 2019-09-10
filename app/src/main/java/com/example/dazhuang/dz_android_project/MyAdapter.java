@@ -13,9 +13,10 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context mContext;
     private List<String> mList;
+
     public MyAdapter(Context mContext, List<String> mList) {
         this.mContext = mContext;
         this.mList = mList;
@@ -30,7 +31,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, final int i) {
         final TopViewHolder topViewHolder = (TopViewHolder) viewHolder;
         String s = mList.get(i);
         topViewHolder.tv_text.setText(s);
@@ -40,9 +41,12 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     public int getItemCount() {
         return mList.size();
     }
+
     public static class TopViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.tv_text)
         TextView tv_text;
+        @BindView(R.id.tv_delete)
+        TextView tv_delete;
 
         public TopViewHolder(final View itemView) {
             super(itemView);
