@@ -15,9 +15,11 @@ import android.widget.RelativeLayout;
 
 import com.example.dazhuang.dz_android_project.R;
 import com.example.dazhuang.dz_android_project.base.BaseActivity;
+import com.example.dazhuang.dz_android_project.view.ShowPickerDialog;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class KeyboardActivity extends BaseActivity {
     @BindView(R.id.edit_view)
@@ -94,5 +96,10 @@ public class KeyboardActivity extends BaseActivity {
         }
     }
 
+    @OnClick(R.id.btn_pick)
+    public void btn_pick() {
+        ShowPickerDialog showPickerDialog = new ShowPickerDialog(getContext());
+        showPickerDialog.show();
+    }
 
 }

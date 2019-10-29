@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class TestActivity extends BaseActivity {
     @BindView(R.id.refreshLayout)
@@ -30,7 +29,7 @@ public class TestActivity extends BaseActivity {
     @BindView(R.id.mRecyclerView)
     LRecyclerView mRecyclerView;
     private List<String> mList = new ArrayList<>();
-
+    private MyAdapter myAdapter;
 
     @Override
     protected int getLayout() {
@@ -47,7 +46,7 @@ public class TestActivity extends BaseActivity {
         for (int i = 0; i < 10; i++) {
             mList.add(i + "测试数据");
         }
-        MyAdapter myAdapter = new MyAdapter(getContext(), mList);
+        myAdapter = new MyAdapter(getContext(), mList);
         mRecyclerView.setAdapter(myAdapter);
         refreshLayout.setRefreshHeader(new MyRefreshHeader(getContext()));
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
@@ -56,7 +55,18 @@ public class TestActivity extends BaseActivity {
                 refreshlayout.finishRefresh(3000); // 模拟请求数据, 3秒后结束
             }
         });
+        myAdapter.setOnValueChangeListener(mValueChangeListener);
     }
+
+    MyAdapter.ValueChangeListener mValueChangeListener = new MyAdapter.ValueChangeListener() {
+        @Override
+        public void onItemDeleteClick(int position) {
+            if (position >= 0 && position < mList.size()) {
+                mList.remove(position);
+                myAdapter.notifyItemRemoved(position);
+            }
+        }
+    };
 
     @Override
     protected void onStop() {

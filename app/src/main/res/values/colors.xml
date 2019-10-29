@@ -10,4 +10,5 @@
     <color name="bg">#88000000</color>
     <color name="orange">#fe711f</color>
     <color name="black">#000000</color>
+    <color name="textline">#E5E5E5</color>
 </resources>

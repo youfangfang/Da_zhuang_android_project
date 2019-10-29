@@ -35,6 +35,15 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         final TopViewHolder topViewHolder = (TopViewHolder) viewHolder;
         String s = mList.get(i);
         topViewHolder.tv_text.setText(s);
+        topViewHolder.tv_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mValueChangeListener != null) {
+                   mValueChangeListener.onItemDeleteClick(topViewHolder.getAdapterPosition());
+                }
+
+            }
+        });
     }
 
     @Override
@@ -55,5 +64,17 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
 
 
+    }
+
+    private ValueChangeListener mValueChangeListener;
+
+    public interface ValueChangeListener {
+
+        void onItemDeleteClick(int position);
+
+    }
+
+    public void setOnValueChangeListener(ValueChangeListener listener) {
+        this.mValueChangeListener = listener;
     }
 }
